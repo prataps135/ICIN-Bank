@@ -11,6 +11,8 @@ import { CreateAccountComponent } from './components/accounts/create-account/cre
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user/user.service';
+import { ToastrModule } from 'ngx-toastr';
+import { NotificationService } from './services/notification/notification.service';
 
 
 @NgModule({
@@ -27,11 +29,17 @@ import { UserService } from './services/user/user.service';
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
-    
+    FormsModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      timeOut: 3000, // 3 seconds
+      progressBar: true,
+      preventDuplicates:true
+    })
   ],
   providers: [
-    UserService
+    UserService,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })

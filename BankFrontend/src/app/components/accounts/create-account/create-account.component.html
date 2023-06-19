@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <h2>Account Creation Form</h2>
     <form ngForm #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
         <div class="form-group">
@@ -23,5 +23,55 @@
         </div>
         <br>
         <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div> -->
+
+
+<div class="container">
+    <h2>Account Creation Form</h2>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="full-width">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput formControlName="name">
+            <mat-error *ngIf="name?.invalid && name?.touched">
+                <span *ngIf="name?.errors?.['required']">Name is required</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Username</mat-label>
+            <input type="text" matInput formControlName="username">
+            <mat-error *ngIf="username?.invalid && username?.touched">
+                <span *ngIf="username?.errors?.['required']">Username is required</span>
+                <span *ngIf="username?.errors?.['minlength']">Must have {{username?.errors?.['minlength'].requiredLength}} characters</span>
+                <span *ngIf="username?.errors?.['maxlength']">Maximum {{username?.errors?.['maxlength'].requiredLength}} characters allowed</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+            <mat-error *ngIf="password?.invalid && password?.touched">
+                <span *ngIf="password?.errors?.['required']">Password is required</span>
+                <span *ngIf="password?.errors?.['minlength']">Must have {{password?.errors?.['minlength'].requiredLength}} characters</span>
+                <span *ngIf="password?.errors?.['maxlength']">Maximun {{password?.errors?.['maxlength'].requiredLength}} characters allowed</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="half-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" placeholder="Ex :- abc@example.com">
+            <mat-error *ngIf="email?.invalid && email?.touched">
+                <span *ngIf="email?.errors?.['required']">Email is required</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="half-width">
+            <mat-label>Contact No</mat-label>
+            <span matPrefix>+91 &nbsp;</span>
+            <input type="number" matInput formControlName="contactNo">
+            <mat-error *ngIf="contactNo?.invalid && contactNo?.touched">
+                <span *ngIf="contactNo?.errors?.['required']">Contact no is required</span>
+                <span *ngIf="contactNo?.errors?.['min']">Please enter valid contact no</span>
+                <span *ngIf="contactNo?.errors?.['max']">Please enter valid contact no</span>
+            </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Submit</button>
     </form>
 </div>
