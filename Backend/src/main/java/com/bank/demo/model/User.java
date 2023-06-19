@@ -2,12 +2,13 @@ package com.bank.demo.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -37,8 +38,8 @@ public class User {
 	@NotNull
 	private long contactNo;
 	
-	@OneToMany
-	private List<Account> accounts;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Account account;
 
 	
 	public User() {
@@ -47,14 +48,14 @@ public class User {
 
 	
 	public User(@NotNull String name, @NotNull String username, @NotNull String password, @NotNull String email,
-			@NotNull long contactNo, List<Account> accounts) {
+			@NotNull long contactNo, Account account) {
 		super();
 		this.name = name;
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.contactNo = contactNo;
-		this.accounts = accounts;
+		this.account = account;
 	}
 
 
@@ -102,12 +103,12 @@ public class User {
 		return id;
 	}
 	
-	public List<Account> getAccounts() {
-		return accounts;
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.demo.model.User;
+import com.bank.demo.service.AccountService;
 import com.bank.demo.service.UserService;
 
 @RestController
@@ -23,6 +24,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private AccountService accountService;
 	
 	@CrossOrigin
 	@GetMapping(value ="/users")
