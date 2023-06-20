@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bank.demo.exception.ListEmptyException;
+import com.bank.demo.exception.UserAlreadyExistsException;
 import com.bank.demo.model.User;
-import com.bank.demo.service.AccountService;
 import com.bank.demo.service.UserService;
 
 @RestController
@@ -25,19 +26,27 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private AccountService accountService;
 	
 	@CrossOrigin
 	@GetMapping(value ="/users")
-	public ResponseEntity<List<User>> getAllUsers(){
+	public ResponseEntity<List<User>> getAllUsers() throws Exception{
 		List<User> users = userService.getAllUsers();
+		if(users.isEmpty()) {
+			throw new ListEmptyException();
+		}
 		return new ResponseEntity<>(users,HttpStatus.OK);
 	}
 	
 	@CrossOrigin
 	@PostMapping(value ="/users")
-	public ResponseEntity<User> addUser(@RequestBody User user){
+	public ResponseEntity<User> addUser(@RequestBody User user) throws Exception{
+		String username = user.getUsername();
+		if(username != null && !"".equals(username)) {
+			User existingUser = userService.getByUsername(username);
+			if(existingUser != null) {
+				throw new UserAlreadyExistsException();
+			}
+		}
 		User newUser = userService.addUser(user);
 		return new ResponseEntity<>(newUser,HttpStatus.OK);
 	}

@@ -13,7 +13,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class CreateAccountComponent implements OnInit {
   user: User;
   userForm: FormGroup;
-  accountTypes:string[];
+  accountTypes: string[];
 
   constructor(
     private userService: UserService,
@@ -22,7 +22,7 @@ export class CreateAccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = new User();
-    this.accountTypes = ['Saving','Current'];
+    this.accountTypes = ['Saving', 'Current'];
     this.formCreation();
   }
 
@@ -44,14 +44,14 @@ export class CreateAccountComponent implements OnInit {
       email: new FormControl('', [
         Validators.required
       ]),
-      account:new FormGroup({
+      account: new FormGroup({
         contactNo: new FormControl('', [
           Validators.required,
           Validators.min(1000000000),
           Validators.max(9999999999)
         ]),
-        type:new FormControl('',Validators.required),
-        balance:new FormControl('',[
+        type: new FormControl('', Validators.required),
+        balance: new FormControl('', [
           Validators.required,
           Validators.min(10000)
         ])
@@ -60,16 +60,16 @@ export class CreateAccountComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.type?.value)
     if (this.userForm.invalid) {
       this.notification.showInfo("Please fill form correctly", "Bank");
-      this.addValueToUser();
-      console.log(this.user);
     } else {
       this.addValueToUser();
       this.userService.addUser(this.user).subscribe(
         data => this.notification.showSuccess("User added successfully", "Bank"),
-        err => this.notification.showError("Can't able to add user", "Bank")
+        err => { 
+          this.notification.showError("Can't able to add user", "Bank"); 
+          this.notification.showError(err.error,"Bank");
+        }
       );
     }
   }
@@ -85,8 +85,8 @@ export class CreateAccountComponent implements OnInit {
     this.user.account.number = this.accountNoGenerator();
   }
 
-  accountNoGenerator():number{
-    return Math.floor(Math.random()*10000000);
+  accountNoGenerator(): number {
+    return Math.floor(Math.random() * 10000000);
   }
 
   get name() {
@@ -101,16 +101,16 @@ export class CreateAccountComponent implements OnInit {
   get email() {
     return this.userForm.get('password');
   }
-  get account(){
+  get account() {
     return this.userForm.get('account');
   }
-  get type(){
+  get type() {
     return this.account?.get('type');
   }
   get contactNo() {
     return this.account?.get('contactNo');
   }
-  get balance(){
+  get balance() {
     return this.account?.get('balance');
   }
 }

@@ -1,0 +1,19 @@
+.container{
+    text-align: center;
+    /* border: solid black 2px; */
+    width: 50%;
+}
+
+button{
+    margin: 5px;
+}
+
+.user-button {
+    background-color: #d63384;
+    color: white;
+}
+
+.admin-button {
+    background-color: #d63384;
+    color: white;
+}

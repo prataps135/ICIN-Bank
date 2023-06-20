@@ -1,21 +1,21 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <button mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <h1 style="padding: 10px;">{{title}}</h1>
-        <span class="menu-spacer"></span>
-        <div>
-            <a mat-button [routerLink]="['/']" [routerLinkActive]="'active'">Accounts</a>
-            <a mat-button [routerLink]="['/create-account']" [routerLinkActive]="'active'">Create Accounts</a>
-            <a mat-button [routerLink]="['/']" [routerLinkActive]="'active'">Contacts</a>
-            <a mat-button [routerLink]="['/']" [routerLinkActive]="'active'">About Us</a>
-            <a mat-button [routerLink]="['/']" [routerLinkActive]="'active'">Blog</a>
-        </div>
-    </mat-toolbar-row>
-    <mat-toolbar-row>
-        <span style="font-size: 12px;">{{title}} helps you easily manage your accounts</span>
-    </mat-toolbar-row>
+        <mat-toolbar-row>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <h1 style="padding: 10px;">{{title}}</h1>
+            <span class="menu-spacer"></span>
+            <div>
+                <a mat-button [routerLink]="['/']" [routerLinkActive]="'active'">Accounts</a>
+                <a mat-button [routerLink]="['/create-account']" [routerLinkActive]="'active'">Create Accounts</a>
+                <a mat-button [routerLink]="['/']" [routerLinkActive]="'active'">Contacts</a>
+                <a mat-button [routerLink]="['/']" [routerLinkActive]="'active'">About Us</a>
+                <a mat-button [routerLink]="['/']" [routerLinkActive]="'active'">Blog</a>
+            </div>
+        </mat-toolbar-row>
+        <mat-toolbar-row>
+            <span style="font-size: 12px;">{{title}} helps you easily manage your accounts</span>
+        </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-sidenav-container>

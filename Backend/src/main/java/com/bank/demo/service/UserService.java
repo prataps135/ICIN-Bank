@@ -10,4 +10,5 @@ import com.bank.demo.model.User;
 public interface UserService {
 	User addUser(User user);
 	List<User> getAllUsers();
+	User getByUsername(String username);
 }

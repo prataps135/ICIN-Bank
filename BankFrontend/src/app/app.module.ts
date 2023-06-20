@@ -13,13 +13,19 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user/user.service';
 import { ToastrModule } from 'ngx-toastr';
 import { NotificationService } from './services/notification/notification.service';
+import { LoginComponent } from './components/login/login.component';
+import { UserLoginComponent } from './components/login/user-login/user-login.component';
+import { AdminLoginComponent } from './components/login/admin-login/admin-login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    LoginComponent,
+    UserLoginComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,7 @@ import { NotificationService } from './services/notification/notification.servic
     FormsModule,
     ToastrModule.forRoot({
       closeButton: true,
-      timeOut: 3000, // 3 seconds
+      timeOut: 5000, // 5 seconds
       progressBar: true,
       preventDuplicates:true
     })
