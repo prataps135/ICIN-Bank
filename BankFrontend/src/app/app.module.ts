@@ -17,6 +17,9 @@ import { LoginComponent } from './components/login/login.component';
 import { UserLoginComponent } from './components/login/user-login/user-login.component';
 import { AdminLoginComponent } from './components/login/admin-login/admin-login.component';
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
+import { AccountListComponent } from './components/accounts/account-list/account-list.component';
+import { AdminListComponent } from './components/admin/admin-list/admin-list.component';
+import { AdminService } from './services/admin/admin.service';
 
 
 @NgModule({
@@ -28,6 +31,8 @@ import { AdminRegistrationComponent } from './components/admin/admin-registratio
     UserLoginComponent,
     AdminLoginComponent,
     AdminRegistrationComponent,
+    AccountListComponent,
+    AdminListComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,8 @@ import { AdminRegistrationComponent } from './components/admin/admin-registratio
   ],
   providers: [
     UserService,
-    NotificationService
+    NotificationService,
+    AdminService
   ],
   bootstrap: [AppComponent]
 })

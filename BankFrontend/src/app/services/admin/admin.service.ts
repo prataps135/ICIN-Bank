@@ -20,4 +20,8 @@ export class AdminService {
   getByUsername(username: string): Observable<Admin> {
     return this.http.get<Admin>(`${this.baseUrl}/${username}`);
   }
+
+  getAllAdmin(): Observable<Admin[]> {
+    return this.http.get<Admin[]>(this.baseUrl);
+  }
 }

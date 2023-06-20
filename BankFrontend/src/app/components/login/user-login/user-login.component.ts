@@ -29,7 +29,7 @@ export class UserLoginComponent implements OnInit {
         data => {
           let password = this.user.password;
           if (data.password === password) {
-            this.notification.showSuccess(`Welcome ${this.user.name}`, "Bank");
+            this.notification.showSuccess(`Welcome ${data.name}`, "Bank");
           } else {
             this.notification.showError("Invalid details", "Bank");
           }
