@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bank.demo.exception.AdminAlreadyExistsException;
 import com.bank.demo.exception.AdminNotFoundException;
 import com.bank.demo.exception.ListEmptyException;
+import com.bank.demo.exception.UserNotFoundException;
 import com.bank.demo.model.Admin;
+import com.bank.demo.model.User;
 import com.bank.demo.service.AdminService;
 
 @RestController
@@ -56,6 +59,16 @@ public class AdminController {
 	@GetMapping(value = "/admin/{username}")
 	public ResponseEntity<Admin> getAdminByUsername(@PathVariable String username) throws Exception{
 		Admin admin = adminService.getByUsername(username);
+		if(admin == null) {
+			throw new AdminNotFoundException();
+		}
+		return new ResponseEntity<>(admin,HttpStatus.OK);
+	}
+	
+	@CrossOrigin
+	@DeleteMapping(value = "/admin/{id}")
+	public ResponseEntity<Admin> deleteAdmin(@PathVariable int id) throws Exception{
+		Admin admin = adminService.deleteAdmin(id);
 		if(admin == null) {
 			throw new AdminNotFoundException();
 		}

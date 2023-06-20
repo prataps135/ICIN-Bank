@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,6 +58,16 @@ public class UserController {
 	@GetMapping(value = "/users/{username}")
 	public ResponseEntity<User> getUserByUsername(@PathVariable String username) throws Exception{
 		User user = userService.getByUsername(username);
+		if(user == null) {
+			throw new UserNotFoundException();
+		}
+		return new ResponseEntity<>(user,HttpStatus.OK);
+	}
+	
+	@CrossOrigin
+	@DeleteMapping(value = "/users/{id}")
+	public ResponseEntity<User> deleteUser(@PathVariable int id) throws Exception{
+		User user = userService.deleteUser(id);
 		if(user == null) {
 			throw new UserNotFoundException();
 		}

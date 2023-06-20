@@ -6,4 +6,6 @@ import com.bank.demo.model.User;
 
 public interface UserRepo extends JpaRepository<User, Integer>{
 	User findByUsername(String username);
+//	User deleteByUsername(String username);
+	User findById(int id);
 }

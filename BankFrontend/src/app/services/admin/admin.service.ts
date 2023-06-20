@@ -24,4 +24,8 @@ export class AdminService {
   getAllAdmin(): Observable<Admin[]> {
     return this.http.get<Admin[]>(this.baseUrl);
   }
+
+  deleteAdmin(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
 }

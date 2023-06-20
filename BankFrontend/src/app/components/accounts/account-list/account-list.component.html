@@ -13,10 +13,10 @@
             <tr *ngFor="let user of accountList;let i = index">
                 <th>{{i+1}}</th>
                 <td>{{user.name}}</td>
-                <td>{{user.account?.number}}</td>
+                <td>{{user.account.number}}</td>
                 <td>
                     <button mat-raised-button color="primary">Update</button>
-                    <button mat-raised-button color="warn">Delete</button>
+                    <button mat-raised-button color="warn" (click)="onDelete(user.id)" type="button">Delete</button>
                     <button mat-raised-button >Details</button>
                 </td>
             </tr>

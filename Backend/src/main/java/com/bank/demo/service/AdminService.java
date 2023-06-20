@@ -11,4 +11,5 @@ public interface AdminService {
 	Admin addAdmin(Admin admin);
 	List<Admin> getAllAdmin();
 	Admin getByUsername(String username);
+	Admin deleteAdmin(int id);
 }

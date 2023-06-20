@@ -10,13 +10,13 @@ import com.bank.demo.repo.UserRepo;
 import com.bank.demo.service.UserService;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepo userRepo;
-	
+
 	@Override
-	public User addUser(User user) {		
+	public User addUser(User user) {
 		User newUser = userRepo.save(user);
 		return newUser;
 	}
@@ -31,6 +31,16 @@ public class UserServiceImpl implements UserService{
 	public User getByUsername(String username) {
 		User user = userRepo.findByUsername(username);
 		return user;
+	}
+
+	@Override
+	public User deleteUser(int id) {
+		User user = userRepo.findById(id);
+		if (user != null) {
+			userRepo.delete(user);
+			return user;
+		}
+		return null;
 	}
 
 }

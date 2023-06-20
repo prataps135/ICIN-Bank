@@ -18,7 +18,7 @@
                 <td>{{admin.password}}</td>
                 <td>
                     <button mat-raised-button color="primary">Update</button>
-                    <button mat-raised-button color="warn">Delete</button>
+                    <button mat-raised-button color="warn" type="button" (click)="onDelete(admin.id)">Delete</button>
                 </td>
             </tr>
         </tbody>

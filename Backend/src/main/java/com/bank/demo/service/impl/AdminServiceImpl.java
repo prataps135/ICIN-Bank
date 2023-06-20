@@ -32,6 +32,16 @@ public class AdminServiceImpl implements AdminService{
 		Admin admin = adminRepo.findByUsername(username);
 		return admin;
 	}
+
+	@Override
+	public Admin deleteAdmin(int id) {
+		Admin admin = adminRepo.findById(id);
+		if(admin != null) {
+			adminRepo.delete(admin);
+			return admin;
+		}
+		return null;
+	}
 	
 	
 }
