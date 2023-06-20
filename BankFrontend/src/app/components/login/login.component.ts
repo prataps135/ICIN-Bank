@@ -10,7 +10,7 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   userLogin() {

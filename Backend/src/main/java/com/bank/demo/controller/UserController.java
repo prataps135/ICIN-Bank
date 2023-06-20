@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.demo.exception.ListEmptyException;
 import com.bank.demo.exception.UserAlreadyExistsException;
+import com.bank.demo.exception.UserNotFoundException;
 import com.bank.demo.model.User;
 import com.bank.demo.service.UserService;
 
@@ -49,5 +51,15 @@ public class UserController {
 		}
 		User newUser = userService.addUser(user);
 		return new ResponseEntity<>(newUser,HttpStatus.OK);
+	}
+	
+	@CrossOrigin
+	@GetMapping(value = "/users/{username}")
+	public ResponseEntity<User> getUserByUsername(@PathVariable String username) throws Exception{
+		User user = userService.getByUsername(username);
+		if(user == null) {
+			throw new UserNotFoundException();
+		}
+		return new ResponseEntity<>(user,HttpStatus.OK);
 	}
 }

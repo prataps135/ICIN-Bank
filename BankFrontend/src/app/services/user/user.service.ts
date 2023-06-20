@@ -15,4 +15,9 @@ export class UserService {
   addUser(user:User):Observable<any>{
     return this.http.post(this.baseUrl,user);
   }
+
+  getByUsername(username:string):Observable<User>{
+    return this.http.get<User>(`${this.baseUrl}/${username}`);
+  }
+
 }

@@ -8,12 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.demo.exception.AdminAlreadyExistsException;
+import com.bank.demo.exception.AdminNotFoundException;
 import com.bank.demo.exception.ListEmptyException;
 import com.bank.demo.model.Admin;
 import com.bank.demo.service.AdminService;
@@ -50,4 +52,13 @@ public class AdminController {
 		return new ResponseEntity<>(newAdmin, HttpStatus.OK);
 	}
 
+	@CrossOrigin
+	@GetMapping(value = "/admin/{username}")
+	public ResponseEntity<Admin> getAdminByUsername(@PathVariable String username) throws Exception{
+		Admin admin = adminService.getByUsername(username);
+		if(admin == null) {
+			throw new AdminNotFoundException();
+		}
+		return new ResponseEntity<>(admin,HttpStatus.OK);
+	}
 }

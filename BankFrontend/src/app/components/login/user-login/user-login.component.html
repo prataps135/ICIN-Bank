@@ -1,20 +1,20 @@
 <div class="container">
     <h2 class="text-center">User Login</h2>
-    <form ngForm>
+    <form ngForm #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
         <mat-form-field class="full-width">
             <mat-label>Username</mat-label>
-            <input type="text" matInput #username="ngModel" name="username" ngModel required>
+            <input type="text" matInput #username="ngModel" name="username" [(ngModel)]="user.username" required>
             <mat-error *ngIf="username.invalid && username.touched">
                 <span *ngIf="username.errors?.['required']">Field required</span>
             </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
             <mat-label>Password</mat-label>
-            <input type="password" matInput #password="ngModel" name="password" ngModel required>
+            <input type="password" matInput #password="ngModel" name="password" [(ngModel)]="user.password" required>
             <mat-error *ngIf="password.invalid && password.touched">
                 <span *ngIf="password.errors?.['required']">Field required</span>
             </mat-error>
         </mat-form-field>
-        <button mat-raised-button color="accent"><mat-icon>login</mat-icon></button>
+        <button mat-raised-button color="accent" type="submit"><mat-icon>login</mat-icon></button>
     </form>
 </div>

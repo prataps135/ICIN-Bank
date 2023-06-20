@@ -26,4 +26,14 @@ public class GlobalExceptionHadler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<>("List is empty", HttpStatus.CONFLICT);
 	}
 
+	@ExceptionHandler(value = AdminNotFoundException.class)
+	public ResponseEntity<Object> exception(AdminNotFoundException ex) {
+		return new ResponseEntity<>("Admin not found in database", HttpStatus.CONFLICT);
+	}
+
+	@ExceptionHandler(value = UserNotFoundException.class)
+	public ResponseEntity<Object> exception(UserNotFoundException ex) {
+		return new ResponseEntity<>("User not found in database", HttpStatus.CONFLICT);
+	}
+
 }
