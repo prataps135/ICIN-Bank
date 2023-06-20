@@ -42,7 +42,7 @@
             <input type="text" matInput formControlName="username">
             <mat-error *ngIf="username?.invalid && username?.touched">
                 <span *ngIf="username?.errors?.['required']">Username is required</span>
-                <span *ngIf="username?.errors?.['minlength']">Must have
+                <span *ngIf="username?.errors?.['minlength']">Must have atleast
                     {{username?.errors?.['minlength'].requiredLength}} characters</span>
                 <span *ngIf="username?.errors?.['maxlength']">Maximum {{username?.errors?.['maxlength'].requiredLength}}
                     characters allowed</span>
@@ -53,7 +53,7 @@
             <input type="password" matInput formControlName="password">
             <mat-error *ngIf="password?.invalid && password?.touched">
                 <span *ngIf="password?.errors?.['required']">Password is required</span>
-                <span *ngIf="password?.errors?.['minlength']">Must have
+                <span *ngIf="password?.errors?.['minlength']">Must have atleast
                     {{password?.errors?.['minlength'].requiredLength}} characters</span>
                 <span *ngIf="password?.errors?.['maxlength']">Maximun {{password?.errors?.['maxlength'].requiredLength}}
                     characters allowed</span>

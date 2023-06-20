@@ -1,5 +1,6 @@
-export class Admin{
-    id:number;
-    username:string;
-    password:string;
+export class Admin {
+    id: number;
+    name: string;
+    username: string;
+    password: string;
 }

@@ -16,6 +16,7 @@ import { NotificationService } from './services/notification/notification.servic
 import { LoginComponent } from './components/login/login.component';
 import { UserLoginComponent } from './components/login/user-login/user-login.component';
 import { AdminLoginComponent } from './components/login/admin-login/admin-login.component';
+import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AdminLoginComponent } from './components/login/admin-login/admin-login.
     LoginComponent,
     UserLoginComponent,
     AdminLoginComponent,
+    AdminRegistrationComponent,
   ],
   imports: [
     BrowserModule,

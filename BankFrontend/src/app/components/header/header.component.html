@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="toolbar-fixed"> 
         <mat-toolbar-row>
             <button mat-icon-button (click)="sidenav.toggle()">
                 <mat-icon>menu</mat-icon>
@@ -10,7 +10,7 @@
                 <a mat-button [routerLink]="['/create-account']" [routerLinkActive]="'active'">Create Accounts</a>
                 <a mat-button [routerLink]="['/']" [routerLinkActive]="'active'">Contacts</a>
                 <a mat-button [routerLink]="['/']" [routerLinkActive]="'active'">About Us</a>
-                <a mat-button [routerLink]="['/']" [routerLinkActive]="'active'">Blog</a>
+                <a mat-button [routerLink]="['/login']" [routerLinkActive]="'active'">Login</a>
             </div>
         </mat-toolbar-row>
         <mat-toolbar-row>
@@ -25,7 +25,7 @@
             <a mat-list-item [routerLink]="['/create-account']" [routerLinkActive]="'active'">Create Accounts</a>
             <a mat-list-item [routerLink]="['/']" [routerLinkActive]="'active'">Contacts</a>
             <a mat-list-item [routerLink]="['/']" [routerLinkActive]="'active'">About Us</a>
-            <a mat-list-item [routerLink]="['/']" [routerLinkActive]="'active'">Blog</a>
+            <a mat-list-item [routerLink]="['/login']" [routerLinkActive]="'active'">Login</a>
             <a mat-list-item (click)="sidenav.toggle()">Close</a>
         </mat-nav-list>
     </mat-sidenav>

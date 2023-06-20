@@ -1,0 +1,30 @@
+<div class="container">
+    <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="full-width">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput formControlName="name">
+            <mat-error *ngIf="name?.invalid && name?.touched">
+                <span *ngIf="name?.errors?.['required']">Name is required</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Username</mat-label>
+            <input type="text" matInput formControlName="username">
+            <mat-error *ngIf="username?.invalid && username?.touched">
+                <span *ngIf="username?.errors?.['required']">Username is required</span>
+                <span *ngIf="username?.errors?.['minlength']">Must have altleast {{username?.errors?.['minlength'].requiredLength}} characters</span>
+                <span *ngIf="username?.errors?.['maxlength']">Maximum {{username?.errors?.['maxlength'].requiredLength}} characters allowed</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input type="text" matInput formControlName="password">
+            <mat-error *ngIf="password?.invalid && password?.touched">
+                <span *ngIf="password?.errors?.['required']">Password is required</span>
+                <span *ngIf="password?.errors?.['minlength']">Must have altleast {{password?.errors?.['minlength'].requiredLength}} characters</span>
+                <span *ngIf="password?.errors?.['maxlength']">Maximum {{password?.errors?.['maxlength'].requiredLength}} characters allowed</span>
+            </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Submit</button>
+    </form>
+</div>

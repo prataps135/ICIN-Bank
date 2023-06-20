@@ -14,6 +14,10 @@ public class Admin {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Column 
+	@NotNull
+	private String name;
+	
 	@Column
 	@NotNull
 	private String username;
@@ -26,10 +30,11 @@ public class Admin {
 		super();
 	}
 
-	public Admin(@NotNull String username, @NotNull String password) {
+	public Admin(@NotNull String username, @NotNull String password, String name) {
 		super();
 		this.username = username;
 		this.password = password;
+		this.name = name;
 	}
 
 	public String getUsername() {
@@ -50,6 +55,14 @@ public class Admin {
 
 	public int getId() {
 		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
