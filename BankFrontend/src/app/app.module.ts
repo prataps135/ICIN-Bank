@@ -23,6 +23,7 @@ import { AdminService } from './services/admin/admin.service';
 import { AccountDetailsComponent } from './components/accounts/account-details/account-details.component';
 import { UpdateAccountComponent } from './components/accounts/update-account/update-account.component';
 import { UpdateAdminComponent } from './components/admin/update-admin/update-admin.component';
+import { UserPortalComponent } from './components/accounts/user-portal/user-portal.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { UpdateAdminComponent } from './components/admin/update-admin/update-adm
     AdminListComponent,
     AccountDetailsComponent,
     UpdateAccountComponent,
-    UpdateAdminComponent
+    UpdateAdminComponent,
+    UserPortalComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -14,7 +16,9 @@ export class UserLoginComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private notification: NotificationService
+    private notification: NotificationService,
+    private authService: AuthenticationService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +34,10 @@ export class UserLoginComponent implements OnInit {
           let password = this.user.password;
           if (data.password === password) {
             this.notification.showSuccess(`Welcome ${data.name}`, "Bank");
+            this.authService.setUser(this.user);
+            setTimeout(()=>{
+              this.router.navigate(['user-portel']);
+            },3000)
           } else {
             this.notification.showError("Invalid details", "Bank");
           }
