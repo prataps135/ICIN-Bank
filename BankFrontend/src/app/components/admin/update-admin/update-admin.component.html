@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="text-center">Admin Registration Form</h2>
+    <h2 class="text-center">Admin Updation Form</h2>
     <form [formGroup]="adminForm" (ngSubmit)="onSubmit()">
         <mat-form-field class="full-width">
             <mat-label>Name</mat-label>
@@ -26,6 +26,6 @@
                 <span *ngIf="password?.errors?.['maxlength']">Maximum {{password?.errors?.['maxlength'].requiredLength}} characters allowed</span>
             </mat-error>
         </mat-form-field>
-        <button mat-raised-button color="primary">Submit</button>
+        <button mat-raised-button color="primary">Update</button>
     </form>
 </div>

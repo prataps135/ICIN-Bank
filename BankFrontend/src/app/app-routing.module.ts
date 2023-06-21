@@ -7,6 +7,9 @@ import { AdminLoginComponent } from './components/login/admin-login/admin-login.
 import { AdminRegistrationComponent } from './components/admin/admin-registration/admin-registration.component';
 import { AccountListComponent } from './components/accounts/account-list/account-list.component';
 import { AdminListComponent } from './components/admin/admin-list/admin-list.component';
+import { AccountDetailsComponent } from './components/accounts/account-details/account-details.component';
+import { UpdateAccountComponent } from './components/accounts/update-account/update-account.component';
+import { UpdateAdminComponent } from './components/admin/update-admin/update-admin.component';
 
 const routes: Routes = [
   { path: 'create-account', component: CreateAccountComponent },
@@ -18,7 +21,10 @@ const routes: Routes = [
     ]
   },
   { path: 'account-list', component: AccountListComponent },
-  { path: 'admin-list', component: AdminListComponent }
+  { path: 'admin-list', component: AdminListComponent },
+  { path: 'account-details/:id', component: AccountDetailsComponent },
+  { path: 'update-account/:id', component: UpdateAccountComponent },
+  { path: 'update-admin/:id', component: UpdateAdminComponent }
 
 ];
 

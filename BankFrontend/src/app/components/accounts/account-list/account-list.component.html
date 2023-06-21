@@ -15,9 +15,9 @@
                 <td>{{user.name}}</td>
                 <td>{{user.account.number}}</td>
                 <td>
-                    <button mat-raised-button color="primary">Update</button>
+                    <button mat-raised-button color="primary" (click)="onUpdate(user.id)" >Update</button>
                     <button mat-raised-button color="warn" (click)="onDelete(user.id)" type="button">Delete</button>
-                    <button mat-raised-button >Details</button>
+                    <button mat-raised-button (click)="OnDetails(user.id)" type="button">Details</button>
                 </td>
             </tr>
         </tbody>

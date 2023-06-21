@@ -10,7 +10,7 @@ import com.bank.demo.repo.AdminRepo;
 import com.bank.demo.service.AdminService;
 
 @Service
-public class AdminServiceImpl implements AdminService{
+public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private AdminRepo adminRepo;
@@ -26,7 +26,7 @@ public class AdminServiceImpl implements AdminService{
 		List<Admin> admins = adminRepo.findAll();
 		return admins;
 	}
-	
+
 	@Override
 	public Admin getByUsername(String username) {
 		Admin admin = adminRepo.findByUsername(username);
@@ -36,12 +36,33 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public Admin deleteAdmin(int id) {
 		Admin admin = adminRepo.findById(id);
-		if(admin != null) {
+		if (admin != null) {
 			adminRepo.delete(admin);
 			return admin;
 		}
 		return null;
 	}
-	
-	
+
+	@Override
+	public Admin getById(int id) {
+		Admin admin = adminRepo.findById(id);
+		if (admin != null) {
+			return admin;
+		}
+		return null;
+	}
+
+	@Override
+	public Admin updateAdmin(int id, Admin admin) {
+		Admin existingAdmin = adminRepo.findById(id);
+		if(existingAdmin != null) {
+			existingAdmin.setName(admin.getName());
+			existingAdmin.setPassword(admin.getPassword());
+			existingAdmin.setUsername(admin.getUsername());
+			Admin updatedAdmin = adminRepo.save(existingAdmin);
+			return updatedAdmin;
+		}
+		return null;
+	}
+
 }

@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bank.demo.exception.AdminNotFoundException;
 import com.bank.demo.exception.ListEmptyException;
 import com.bank.demo.exception.UserAlreadyExistsException;
 import com.bank.demo.exception.UserNotFoundException;
@@ -72,5 +74,26 @@ public class UserController {
 			throw new UserNotFoundException();
 		}
 		return new ResponseEntity<>(user,HttpStatus.OK);
+	}
+	
+	@CrossOrigin()
+	@GetMapping(value = "/users/id/{id}")
+	public ResponseEntity<User> getById(@PathVariable int id) throws Exception{
+		User user = userService.getById(id);
+		if(user == null) {
+			throw new UserNotFoundException();
+		}
+		
+		return new ResponseEntity<>(user,HttpStatus.OK);
+	}
+	
+	@CrossOrigin
+	@PutMapping(value ="/users/{id}")
+	public ResponseEntity<User> updateUser(@PathVariable int id, @RequestBody User user) throws Exception {
+		User updatedUser = userService.updateUser(id, user);
+		if(updatedUser == null) {
+			throw new AdminNotFoundException();
+		}
+		return new ResponseEntity<>(updatedUser,HttpStatus.OK);
 	}
 }

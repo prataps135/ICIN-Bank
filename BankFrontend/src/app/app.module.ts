@@ -20,6 +20,9 @@ import { AdminRegistrationComponent } from './components/admin/admin-registratio
 import { AccountListComponent } from './components/accounts/account-list/account-list.component';
 import { AdminListComponent } from './components/admin/admin-list/admin-list.component';
 import { AdminService } from './services/admin/admin.service';
+import { AccountDetailsComponent } from './components/accounts/account-details/account-details.component';
+import { UpdateAccountComponent } from './components/accounts/update-account/update-account.component';
+import { UpdateAdminComponent } from './components/admin/update-admin/update-admin.component';
 
 
 @NgModule({
@@ -33,6 +36,9 @@ import { AdminService } from './services/admin/admin.service';
     AdminRegistrationComponent,
     AccountListComponent,
     AdminListComponent,
+    AccountDetailsComponent,
+    UpdateAccountComponent,
+    UpdateAdminComponent
   ],
   imports: [
     BrowserModule,

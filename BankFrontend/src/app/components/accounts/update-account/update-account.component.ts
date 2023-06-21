@@ -1,57 +1,74 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { UserService } from 'src/app/services/user/user.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-create-account',
-  templateUrl: './create-account.component.html',
-  styleUrls: ['./create-account.component.css']
+  selector: 'app-update-account',
+  templateUrl: './update-account.component.html',
+  styleUrls: ['./update-account.component.css']
 })
-export class CreateAccountComponent implements OnInit {
-  user: User;
+export class UpdateAccountComponent implements OnInit {
   userForm: FormGroup;
-  accountTypes: string[];
+  user: User;
+  accountTypes: string[] = ['Saving', 'Current'];
+  id: number;
 
   constructor(
     private userService: UserService,
-    private notification: NotificationService
+    private route: ActivatedRoute,
+    private notification: NotificationService,
+    private location:Location
   ) { }
 
   ngOnInit(): void {
     this.user = new User();
-    this.accountTypes = ['Saving', 'Current'];
+    this.id = this.route.snapshot.params['id'];
+    this.fetchUser(this.id);
     this.formCreation();
   }
 
-  formCreation() {
+  fetchUser(id: number) {
+    this.userService.getById(id).subscribe(
+      data => {
+        this.user = data;
+        this.formCreation(this.user);
+      },
+      err => {
+        this.notification.showWarning(err.error, "Bank");
+      }
+    );
+  }
+
+  formCreation(user?: User) {
     this.userForm = new FormGroup({
-      name: new FormControl('', [
+      name: new FormControl(user?.name, [
         Validators.required,
       ]),
-      username: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(30)
-      ]),
-      password: new FormControl('', [
+      username: new FormControl(user?.username, [
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(30)
       ]),
-      email: new FormControl('', [
+      password: new FormControl(user?.password, [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(30)
+      ]),
+      email: new FormControl(user?.email, [
         Validators.required
       ]),
-      contactNo: new FormControl('', [
+      contactNo: new FormControl(user?.contactNo, [
         Validators.required,
         Validators.min(1000000000),
         Validators.max(9999999999)
       ]),
       account: new FormGroup({
-        type: new FormControl('', Validators.required),
-        balance: new FormControl('', [
+        type: new FormControl(user?.account?.type, Validators.required),
+        balance: new FormControl(user?.account?.balance, [
           Validators.required,
           Validators.min(10000)
         ])
@@ -59,20 +76,21 @@ export class CreateAccountComponent implements OnInit {
     });
   }
 
+
   onSubmit() {
     if (this.userForm.invalid) {
       this.notification.showInfo("Please fill form correctly", "Bank");
     } else {
       this.addValueToUser();
-      this.userService.addUser(this.user).subscribe(
+      this.userService.updateUser(this.id, this.user).subscribe(
         data => {
-          this.notification.showSuccess("User added successfully", "Bank");
-          setTimeout(() => {
-            this.ngOnInit();
-          }, 3000);
+          this.notification.showSuccess("User updated successfully", "Bank");
+          setTimeout(()=>{
+            this.location.back();
+          },3000);
         },
         err => {
-          this.notification.showError("Can't able to add user", "Bank");
+          this.notification.showError("Can't able to update user", "Bank");
           this.notification.showError(err.error, "Bank");
         }
       );
@@ -85,13 +103,8 @@ export class CreateAccountComponent implements OnInit {
     this.user.password = this.password?.value;
     this.user.email = this.email?.value;
     this.user.contactNo = this.contactNo?.value;
-    this.user.account.type = this.type?.value;
     this.user.account.balance = this.balance?.value;
-    this.user.account.number = this.accountNoGenerator();
-  }
-
-  accountNoGenerator(): number {
-    return Math.floor(Math.random() * 10000000);
+    this.user.account.type = this.type?.value;
   }
 
   get name() {
@@ -104,18 +117,18 @@ export class CreateAccountComponent implements OnInit {
     return this.userForm.get('password');
   }
   get email() {
-    return this.userForm.get('password');
-  }
-  get account() {
-    return this.userForm.get('account');
-  }
-  get type() {
-    return this.account?.get('type');
+    return this.userForm.get('email');
   }
   get contactNo() {
     return this.userForm.get('contactNo');
   }
+  get account() {
+    return this.userForm.get('account');
+  }
   get balance() {
     return this.account?.get('balance');
+  }
+  get type() {
+    return this.account?.get('type');
   }
 }

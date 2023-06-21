@@ -28,4 +28,11 @@ export class UserService {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
 
+  getById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/id/${id}`);
+  }
+
+  updateUser(id: number, user: User): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, user);
+  }
 }

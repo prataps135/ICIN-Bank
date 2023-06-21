@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -14,6 +15,7 @@ export class AccountListComponent implements OnInit {
   constructor(
     private userService: UserService,
     private notification: NotificationService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -41,5 +43,13 @@ export class AccountListComponent implements OnInit {
         this.notification.showError(err.error, "Bank");
       }
     );
+  }
+
+  OnDetails(id: number) {
+    this.router.navigate([`account-details/${id}`]);
+  }
+
+  onUpdate(id: number) {
+    this.router.navigate([`update-account/${id}`]);
   }
 }

@@ -28,4 +28,12 @@ export class AdminService {
   deleteAdmin(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
+
+  getById(id: number): Observable<Admin> {
+    return this.http.get<Admin>(`${this.baseUrl}/id/${id}`);
+  }
+
+  updateAdmin(id: number, admin: Admin): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, admin);
+  }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Admin } from 'src/app/model/admin';
 import { AdminService } from 'src/app/services/admin/admin.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
@@ -11,9 +13,11 @@ import { NotificationService } from 'src/app/services/notification/notification.
 export class AdminListComponent implements OnInit {
   adminList: Admin[] = [];
 
+
   constructor(
     private adminService: AdminService,
-    private notification: NotificationService
+    private notification: NotificationService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -27,7 +31,11 @@ export class AdminListComponent implements OnInit {
         this.notification.showWarning(err.error, "Bank");
       }
     );
+
+
   }
+
+
 
   onDelete(id: number) {
     this.adminService.deleteAdmin(id).subscribe(
@@ -42,4 +50,9 @@ export class AdminListComponent implements OnInit {
       }
     );
   }
+
+  onUpdate(id: number) {
+    this.router.navigate([`update-admin/${id}`]);
+  }
+
 }
