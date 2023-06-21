@@ -55,7 +55,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public Admin updateAdmin(int id, Admin admin) {
 		Admin existingAdmin = adminRepo.findById(id);
-		if(existingAdmin != null) {
+		if (existingAdmin != null) {
 			existingAdmin.setName(admin.getName());
 			existingAdmin.setPassword(admin.getPassword());
 			existingAdmin.setUsername(admin.getUsername());

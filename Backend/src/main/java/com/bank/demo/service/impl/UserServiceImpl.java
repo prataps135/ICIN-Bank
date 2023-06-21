@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User updateUser(int id, User user) {
 		User existingUser = userRepo.findById(id);
-		if(existingUser != null) {
+		if (existingUser != null) {
 			existingUser.setName(user.getName());
 			existingUser.setUsername(user.getUsername());
 			existingUser.setPassword(user.getPassword());
@@ -66,5 +66,6 @@ public class UserServiceImpl implements UserService {
 		}
 		return null;
 	}
+
 
 }

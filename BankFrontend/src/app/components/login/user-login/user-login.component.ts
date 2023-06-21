@@ -34,10 +34,10 @@ export class UserLoginComponent implements OnInit {
           let password = this.user.password;
           if (data.password === password) {
             this.notification.showSuccess(`Welcome ${data.name}`, "Bank");
-            this.authService.setUser(this.user);
+            this.authService.setUser(data);
             setTimeout(()=>{
-              this.router.navigate(['user-portel']);
-            },3000)
+              this.router.navigate(['user-portal']);
+            },3000);
           } else {
             this.notification.showError("Invalid details", "Bank");
           }

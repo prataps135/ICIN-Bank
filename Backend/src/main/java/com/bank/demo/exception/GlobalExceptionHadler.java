@@ -36,4 +36,9 @@ public class GlobalExceptionHadler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<>("User not found in database", HttpStatus.CONFLICT);
 	}
 
+	@ExceptionHandler(value = AccountNotFoundException.class)
+	public ResponseEntity<Object> exception(AccountNotFoundException ex) {
+		return new ResponseEntity<>("Account not found in database", HttpStatus.CONFLICT);
+	}
+
 }

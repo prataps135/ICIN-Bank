@@ -25,7 +25,9 @@ import { UpdateAccountComponent } from './components/accounts/update-account/upd
 import { UpdateAdminComponent } from './components/admin/update-admin/update-admin.component';
 import { UserPortalComponent } from './components/accounts/user-portal/user-portal.component';
 import { PortalAccountDetailsComponent } from './components/accounts/user-portal/portal-account-details/portal-account-details.component';
-import { BalanceDialogComponent } from './components/accounts/user-portal/balance-dialog/balance-dialog.component';
+import { BalanceDialogComponent } from './components/accounts/user-portal/dialog/balance-dialog/balance-dialog.component';
+import { WidthdrawComponent } from './components/accounts/user-portal/widthdraw/widthdraw.component';
+import { WithdrawDialogComponent } from './components/accounts/user-portal/dialog/withdraw-dialog/withdraw-dialog.component';
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import { BalanceDialogComponent } from './components/accounts/user-portal/balanc
     UserPortalComponent,
     PortalAccountDetailsComponent,
     BalanceDialogComponent,
+    WidthdrawComponent,
+    WithdrawDialogComponent,
     
   ],
   imports: [

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/model/user';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
-import { BalanceDialogComponent } from './balance-dialog/balance-dialog.component';
+import { BalanceDialogComponent } from './dialog/balance-dialog/balance-dialog.component';
 
 @Component({
   selector: 'app-user-portal',
@@ -27,9 +27,9 @@ export class UserPortalComponent implements OnInit {
       data: { balance: this.currentUser.account.balance }
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
 
   }
 }

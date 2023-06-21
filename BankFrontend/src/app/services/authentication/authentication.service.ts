@@ -7,7 +7,8 @@ import { User } from 'src/app/model/user';
 })
 export class AuthenticationService {
   private auth: string;
-  private currentUser: User={
+  private currentUser: User
+  ={
     id: 101,
     name: 'Pratap Singh',
     username: 'prataps134',
