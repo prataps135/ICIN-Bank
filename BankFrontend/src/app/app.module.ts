@@ -24,6 +24,8 @@ import { AccountDetailsComponent } from './components/accounts/account-details/a
 import { UpdateAccountComponent } from './components/accounts/update-account/update-account.component';
 import { UpdateAdminComponent } from './components/admin/update-admin/update-admin.component';
 import { UserPortalComponent } from './components/accounts/user-portal/user-portal.component';
+import { PortalAccountDetailsComponent } from './components/accounts/user-portal/portal-account-details/portal-account-details.component';
+import { BalanceDialogComponent } from './components/accounts/user-portal/balance-dialog/balance-dialog.component';
 
 
 @NgModule({
@@ -41,6 +43,9 @@ import { UserPortalComponent } from './components/accounts/user-portal/user-port
     UpdateAccountComponent,
     UpdateAdminComponent,
     UserPortalComponent,
+    PortalAccountDetailsComponent,
+    BalanceDialogComponent,
+    
   ],
   imports: [
     BrowserModule,

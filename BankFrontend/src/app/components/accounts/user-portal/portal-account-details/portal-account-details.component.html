@@ -1,0 +1,36 @@
+<div class="container">
+    <mat-card>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item>
+                    <label>Username = </label>
+                    {{user.username}}
+                </mat-list-item>
+                <mat-list-item>
+                    <label>Password = </label>
+                    {{user.password}}
+                </mat-list-item>
+                <mat-list-item>
+                    <label>Email = </label>
+                    {{user.email}}
+                </mat-list-item>
+                <mat-list-item>
+                    <label>Contact No = </label>
+                    {{user.contactNo}}
+                </mat-list-item>
+                <mat-list-item>
+                    <label>A/c Number = </label>
+                    {{user.account.number}}
+                </mat-list-item>
+                <!-- <mat-list-item>
+                    <label>Balance = </label>
+                    {{user.account.balance | currency:'INR'}}
+                </mat-list-item> -->
+                <mat-list-item>
+                    <label>Type = </label>
+                    {{user.account.type}}
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</div>

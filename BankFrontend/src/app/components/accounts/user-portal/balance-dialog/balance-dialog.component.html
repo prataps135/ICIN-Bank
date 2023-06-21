@@ -1,0 +1,7 @@
+<h2 matDialogTitle>Available Balance</h2>
+<div matDialogContent>
+    {{data.balance | currency:'INR'}}
+</div>
+<div matDialogActions>
+    <button mat-flat-button (click)="close()">Close</button>
+</div>
