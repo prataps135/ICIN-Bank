@@ -1,0 +1,10 @@
+<h2 matDialogTitle>Fund Transfer<h2>
+    <div matDialogContent>
+        {{data.amount | currency:'INR'}}
+        <div>
+            <mat-icon>check_circle_outline</mat-icon><span> Successful</span>
+        </div>
+    </div>
+    <div matDialogActions>
+        <button mat-flat-button (click)="close()">Close</button>
+    </div>

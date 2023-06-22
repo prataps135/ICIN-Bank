@@ -11,7 +11,7 @@
 
     <mat-tab-group>
         <mat-tab label="Statement">Statement</mat-tab>
-        <mat-tab label="Fund transfer">Fund transfer</mat-tab>
+        <mat-tab label="Fund transfer"><app-fund-transfer [user]="currentUser"></app-fund-transfer></mat-tab>
         <mat-tab label="Withdraw"><app-widthdraw [user]="currentUser"></app-widthdraw></mat-tab>
         <mat-tab label="Deposite"><app-deposite [user]="currentUser"></app-deposite></mat-tab>
         <mat-tab label="A/c Details">

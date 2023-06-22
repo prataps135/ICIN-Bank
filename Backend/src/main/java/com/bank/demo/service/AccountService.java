@@ -7,4 +7,6 @@ import com.bank.demo.model.Account;
 @Component
 public interface AccountService {
 	Account updateAmount(long acNumber, long amount);
+
+	Account getByAccountNumber(long number);
 }

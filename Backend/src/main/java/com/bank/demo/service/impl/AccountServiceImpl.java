@@ -24,4 +24,13 @@ public class AccountServiceImpl implements AccountService {
 		return null;
 	}
 
+	@Override
+	public Account getByAccountNumber(long number) {
+		Account account = accountRepo.findById(number);
+		if (account != null) {
+			return account;
+		}
+		return null;
+	}
+
 }
