@@ -1,0 +1,35 @@
+<div class="container">
+    <mat-card>
+        <mat-card-header>
+            <h2>Account = {{accountNumber}} | Statement</h2>
+        </mat-card-header>
+        <mat-card-content>
+            <table class="table table-striped"  *ngIf="!error">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let statement of statements;let i = index">
+                        <th>{{i+1}}</th>
+                        <td>{{statement.date | date}}</td>
+                        <td>{{statement.details}}</td>
+                        <td>{{statement.debit}}</td>
+                        <td>{{statement.credit}}</td>
+                        <td>{{statement.balance}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p *ngIf="error">
+                No statement to show
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>
