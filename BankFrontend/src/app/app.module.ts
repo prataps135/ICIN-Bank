@@ -28,6 +28,8 @@ import { PortalAccountDetailsComponent } from './components/accounts/user-portal
 import { BalanceDialogComponent } from './components/accounts/user-portal/dialog/balance-dialog/balance-dialog.component';
 import { WidthdrawComponent } from './components/accounts/user-portal/widthdraw/widthdraw.component';
 import { WithdrawDialogComponent } from './components/accounts/user-portal/dialog/withdraw-dialog/withdraw-dialog.component';
+import { DepositeComponent } from './components/accounts/user-portal/deposite/deposite.component';
+import { DepositeDialogComponent } from './components/accounts/user-portal/dialog/deposite-dialog/deposite-dialog.component';
 
 
 @NgModule({
@@ -49,6 +51,8 @@ import { WithdrawDialogComponent } from './components/accounts/user-portal/dialo
     BalanceDialogComponent,
     WidthdrawComponent,
     WithdrawDialogComponent,
+    DepositeComponent,
+    DepositeDialogComponent,
     
   ],
   imports: [

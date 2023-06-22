@@ -1,20 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/model/user';
 import { AccountService } from 'src/app/services/account/account.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
-import { WithdrawDialogComponent } from '../dialog/withdraw-dialog/withdraw-dialog.component';
+import { DepositeDialogComponent } from '../dialog/deposite-dialog/deposite-dialog.component';
 
 @Component({
-  selector: 'app-widthdraw',
-  templateUrl: './widthdraw.component.html',
-  styleUrls: ['./widthdraw.component.css']
+  selector: 'app-deposite',
+  templateUrl: './deposite.component.html',
+  styleUrls: ['./deposite.component.css']
 })
-export class WidthdrawComponent implements OnInit {
+export class DepositeComponent {
   @Input() user: User;
-  withdrawAmount: number;
+  depositeAmount: number;
 
   constructor(
     private notification: NotificationService,
@@ -23,29 +23,23 @@ export class WidthdrawComponent implements OnInit {
     private dialog: MatDialog
   ) { }
 
-  ngOnInit(): void {
-
-  }
-
-  withdraw(withdrawForm: NgForm) {
-    if (withdrawForm.invalid) {
+  deposite(depositeForm: NgForm) {
+    if (depositeForm.invalid) {
       this.notification.showWarning("Fill form correctly", "Bank");
     } else {
       let balance = this.user.account.balance;
-      let remaining = balance - this.withdrawAmount;
-      this.user.account.balance = remaining;
+      let updatedAmount = this.depositeAmount + balance;
+      this.user.account.balance = updatedAmount;
       let number = this.user.account.number;
-      this.accountService.updateAccount(number, remaining).subscribe(
+      this.accountService.updateAccount(number, updatedAmount).subscribe(
         data => {
-          const dialogRef = this.dialog.open(WithdrawDialogComponent, {
+          const dialogRef = this.dialog.open(DepositeDialogComponent, {
             data: {
-              withdraw: this.withdrawAmount
+              deposite: this.depositeAmount
             }
           });
 
-          dialogRef.afterClosed().subscribe(() =>
-            this.ngOnInit()
-          );
+          dialogRef.afterClosed();
         },
         err => {
           this.notification.showError(err.error, "Bank");

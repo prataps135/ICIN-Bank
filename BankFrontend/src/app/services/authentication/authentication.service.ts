@@ -8,19 +8,19 @@ import { User } from 'src/app/model/user';
 export class AuthenticationService {
   private auth: string;
   private currentUser: User
-  ={
-    id: 101,
-    name: 'Pratap Singh',
-    username: 'prataps134',
-    password: 'prataps123123',
-    email: 'prataps@gmail.com',
-    contactNo: 7877696954,
-    account: {
-      number:12121212,
-      balance:125400,
-      type:'Saving'
-    }
-  };
+  // ={
+  //   id: 101,
+  //   name: 'Pratap Singh',
+  //   username: 'prataps134',
+  //   password: 'prataps123123',
+  //   email: 'prataps@gmail.com',
+  //   contactNo: 7877696954,
+  //   account: {
+  //     number:12121212,
+  //     balance:125400,
+  //     type:'Saving'
+  //   }
+  // };
   private currentAdmin: Admin;
 
   setAuth(auth: string): void {
