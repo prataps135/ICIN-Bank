@@ -1,0 +1,16 @@
+<div>
+    <mat-card>
+        <mat-card-header>
+            <h2>Welcome {{currentAdmin.name}}</h2>
+        </mat-card-header>
+        <mat-card-actions>
+            <button mat-raised-button class="button-design" (click)="logout()">Logout</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <mat-tab-group>
+        <mat-tab label="User-list"><app-account-list></app-account-list></mat-tab>
+        <mat-tab label="Admin-list"><app-admin-list></app-admin-list></mat-tab>
+        <mat-tab label="Cheque Book Request"></mat-tab>
+    </mat-tab-group>
+</div>

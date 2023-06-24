@@ -33,6 +33,7 @@ import { DepositeDialogComponent } from './components/accounts/user-portal/dialo
 import { FundTransferComponent } from './components/accounts/user-portal/fund-transfer/fund-transfer.component';
 import { TransferDialogComponent } from './components/accounts/user-portal/dialog/transfer-dialog/transfer-dialog.component';
 import { StatementComponent } from './components/accounts/user-portal/statement/statement.component';
+import { AdminPortalComponent } from './components/admin/admin-portal/admin-portal.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { StatementComponent } from './components/accounts/user-portal/statement/
     FundTransferComponent,
     TransferDialogComponent,
     StatementComponent,
+    AdminPortalComponent,
     
   ],
   imports: [

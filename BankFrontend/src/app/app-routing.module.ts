@@ -11,6 +11,7 @@ import { AccountDetailsComponent } from './components/accounts/account-details/a
 import { UpdateAccountComponent } from './components/accounts/update-account/update-account.component';
 import { UpdateAdminComponent } from './components/admin/update-admin/update-admin.component';
 import { UserPortalComponent } from './components/accounts/user-portal/user-portal.component';
+import { AdminPortalComponent } from './components/admin/admin-portal/admin-portal.component';
 
 const routes: Routes = [
   { path: 'create-account', component: CreateAccountComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'account-details/:id', component: AccountDetailsComponent },
   { path: 'update-account/:id', component: UpdateAccountComponent },
   { path: 'update-admin/:id', component: UpdateAdminComponent },
-  { path: 'user-portal', component: UserPortalComponent }
+  { path: 'user-portal', component: UserPortalComponent },
+  { path: 'admin-portal', component: AdminPortalComponent }
 
 ];
 

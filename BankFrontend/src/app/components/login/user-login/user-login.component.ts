@@ -35,6 +35,7 @@ export class UserLoginComponent implements OnInit {
           if (data.password === password) {
             this.notification.showSuccess(`Welcome ${data.name}`, "Bank");
             this.authService.setUser(data);
+            this.authService.setAuth('User'); 
             setTimeout(()=>{
               this.router.navigate(['user-portal']);
             },3000);
