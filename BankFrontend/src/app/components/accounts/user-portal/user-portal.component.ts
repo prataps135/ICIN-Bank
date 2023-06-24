@@ -5,6 +5,10 @@ import { AuthenticationService } from 'src/app/services/authentication/authentic
 import { BalanceDialogComponent } from './dialog/balance-dialog/balance-dialog.component';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification/notification.service';
+import { ChequeBookRequestComponent } from './dialog/cheque-book-request/cheque-book-request.component';
+import { ChequeBookService } from 'src/app/services/cheque book/cheque-book.service';
+import { ChequeBook } from 'src/app/model/cheque_book';
+import { ChequeBookStatusComponent } from './dialog/cheque-book-status/cheque-book-status.component';
 
 @Component({
   selector: 'app-user-portal',
@@ -13,16 +17,21 @@ import { NotificationService } from 'src/app/services/notification/notification.
 })
 export class UserPortalComponent implements OnInit {
   currentUser: User;
+  chequeBook: ChequeBook;
 
   constructor(
     private authService: AuthenticationService,
     private dailog: MatDialog,
-    private router:Router,
-    private notification:NotificationService
+    private router: Router,
+    private notification: NotificationService,
+    private chequeBookService: ChequeBookService
   ) { }
 
   ngOnInit(): void {
     this.currentUser = this.authService.getUser();
+    this.chequeBookService.getByAccountNumber(this.currentUser.account.number).subscribe(
+      data => this.chequeBook = data
+    );
   }
 
   balanceDialog() {
@@ -36,10 +45,22 @@ export class UserPortalComponent implements OnInit {
 
   }
 
-  logout(){
+  logout() {
     this.authService.setAuth('N/A');
     this.authService.setUser(new User);
-    this.notification.showInfo("Logout Successful","Bank");
+    this.notification.showInfo("Logout Successful", "Bank");
     this.router.navigate(['/']);
+  }
+
+  chequeBookRequest() {
+    if (this.chequeBook.status === 'Deliverd') {
+      const dialogRef = this.dailog.open(ChequeBookRequestComponent, {
+        data: { user: this.currentUser }
+      });
+    } else {
+      const dialogRef = this.dailog.open(ChequeBookStatusComponent, {
+        data: { chequeBook: this.chequeBook }
+      })
+    }
   }
 }

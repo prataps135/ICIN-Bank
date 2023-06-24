@@ -21,7 +21,7 @@ export class UpdateAccountComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute,
     private notification: NotificationService,
-    private location:Location
+    public location:Location
   ) { }
 
   ngOnInit(): void {

@@ -1,0 +1,20 @@
+<h2 matDialogTitle>Cheque Book Request</h2>
+<div matDialogContent>
+    <form ngForm #chequeForm="ngForm" (ngSubmit)="onSubmit(chequeForm)">
+        <mat-form-field>
+            <mat-label>Select Size</mat-label>
+            <mat-select matInput [(ngModel)]="leaf" required #leafSize="ngModel" name="leafSize">
+                <mat-option *ngFor="let leafSize of leafSizes" [value]="leafSize">
+                    {{leafSize}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="leafSize.invalid && leafSize.touched">
+                <span *ngIf="leafSize.errors?.['required']">Size required</span>
+            </mat-error>
+        </mat-form-field>
+        <div matDialogActions>
+            <button mat-flat-button (click)="close()">Close</button>
+            <button mat-flat-button color="primary" type="submit">Submit</button>
+        </div>
+    </form>
+</div>

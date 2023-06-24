@@ -34,6 +34,13 @@ import { FundTransferComponent } from './components/accounts/user-portal/fund-tr
 import { TransferDialogComponent } from './components/accounts/user-portal/dialog/transfer-dialog/transfer-dialog.component';
 import { StatementComponent } from './components/accounts/user-portal/statement/statement.component';
 import { AdminPortalComponent } from './components/admin/admin-portal/admin-portal.component';
+import { ChequeBookRequestComponent } from './components/accounts/user-portal/dialog/cheque-book-request/cheque-book-request.component';
+import { AuthenticationService } from './services/authentication/authentication.service';
+import { AccountService } from './services/account/account.service';
+import { StatementService } from './services/statement/statement.service';
+import { ChequeBookService } from './services/cheque book/cheque-book.service';
+import { ChequeBookListComponent } from './components/admin/admin-portal/cheque-book-list/cheque-book-list.component';
+import { ChequeBookStatusComponent } from './components/accounts/user-portal/dialog/cheque-book-status/cheque-book-status.component';
 
 
 @NgModule({
@@ -61,6 +68,9 @@ import { AdminPortalComponent } from './components/admin/admin-portal/admin-port
     TransferDialogComponent,
     StatementComponent,
     AdminPortalComponent,
+    ChequeBookRequestComponent,
+    ChequeBookListComponent,
+    ChequeBookStatusComponent,
     
   ],
   imports: [
@@ -82,7 +92,11 @@ import { AdminPortalComponent } from './components/admin/admin-portal/admin-port
   providers: [
     UserService,
     NotificationService,
-    AdminService
+    AdminService,
+    AuthenticationService,
+    AccountService,
+    StatementService,
+    ChequeBookService
   ],
   bootstrap: [AppComponent]
 })
