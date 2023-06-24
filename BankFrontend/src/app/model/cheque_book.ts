@@ -3,4 +3,5 @@ export class ChequeBook {
     accountNumber: number;
     leafSize: number;
     status: string;
+    deliverd: boolean;
 }

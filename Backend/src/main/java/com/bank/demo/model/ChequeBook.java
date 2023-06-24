@@ -25,16 +25,20 @@ public class ChequeBook {
 	@Column
 	@NotNull
 	private String status;
+	
+	@Column
+	private boolean deliverd;
 
 	public ChequeBook() {
 		super();
 	}
 
-	public ChequeBook(@NotNull long accountNumber, @NotNull int leafSize,@NotNull String status) {
+	public ChequeBook(@NotNull long accountNumber, @NotNull int leafSize,@NotNull String status,boolean deliverd) {
 		super();
 		this.accountNumber = accountNumber;
 		this.leafSize = leafSize;
 		this.status = status;
+		this.deliverd = deliverd;
 	}
 
 	public long getAccountNumber() {
@@ -63,6 +67,16 @@ public class ChequeBook {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	
+	
+
+	public boolean isDeliverd() {
+		return deliverd;
+	}
+
+	public void setDeliverd(boolean deliverd) {
+		this.deliverd = deliverd;
 	}
 
 	@Override

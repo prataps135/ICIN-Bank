@@ -29,6 +29,9 @@ export class ChequeBookListComponent implements OnInit {
   }
 
   onUpdate(chequeBook:ChequeBook){
+    if(chequeBook.status === 'Deliverd'){
+      chequeBook.deliverd = true;
+    }
     this.chequeBookService.updateStatus(chequeBook).subscribe({
       next:(data) => this.notification.showSuccess("Status updated","Bank"),
       error:(err) => this.notification.showError("Can't able to update status","Bank")

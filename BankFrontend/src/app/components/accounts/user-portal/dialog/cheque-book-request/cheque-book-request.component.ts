@@ -36,10 +36,12 @@ export class ChequeBookRequestComponent {
       this.chequeBook.accountNumber = this.data.user.account.number;
       this.chequeBook.leafSize = this.leaf;
       this.chequeBook.status = 'Pending';
+      this.chequeBook.deliverd = false;
       this.chequeBookService.addChequeBook(this.chequeBook).subscribe(
         data => this.notification.showSuccess("Request Submited", "Bank"),
         err => this.notification.showError("Can't able to submit request", "Bank")
       );
+      this.dialogRef.close();
     }
   }
 }

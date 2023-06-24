@@ -1,5 +1,6 @@
 package com.bank.demo.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,34 +35,35 @@ public class ChequeBookController {
 		}
 		return new ResponseEntity<>(chequeBooks, HttpStatus.OK);
 	}
-	
+
 	@CrossOrigin
-	@PostMapping(value="/cheque-book")
-	public ResponseEntity<ChequeBook> addChequeBook(@RequestBody ChequeBook chequeBook){
+	@PostMapping(value = "/cheque-book")
+	public ResponseEntity<ChequeBook> addChequeBook(@RequestBody ChequeBook chequeBook) {
 		ChequeBook newChequeBook = bookService.addChequeBook(chequeBook);
-		return new ResponseEntity<>(newChequeBook,HttpStatus.OK);
+		return new ResponseEntity<>(newChequeBook, HttpStatus.OK);
 	}
-	
+
 	@CrossOrigin
 	@PutMapping(value = "/cheque-book")
-	public ResponseEntity<ChequeBook> updateStatus(@RequestBody ChequeBook chequeBook){
+	public ResponseEntity<ChequeBook> updateStatus(@RequestBody ChequeBook chequeBook) {
 		ChequeBook updatedBook = bookService.updateStatus(chequeBook);
-		return new ResponseEntity<>(updatedBook,HttpStatus.OK);
+		return new ResponseEntity<>(updatedBook, HttpStatus.OK);
 	}
-	
+
 	@CrossOrigin
-	@GetMapping(value="cheque-book/{accountNumber}")
-	public ResponseEntity<ChequeBook> getByAccuontNumber(@PathVariable long accountNumber){
+	@GetMapping(value = "cheque-book/{accountNumber}")
+	public ResponseEntity<ChequeBook> getByAccuontNumber(@PathVariable long accountNumber) {
 		List<ChequeBook> books = bookService.getAllChequeBooks();
 		ChequeBook chequeBook = new ChequeBook();
-		for(ChequeBook b : books) {
-			if(b.getAccountNumber() == accountNumber && b.getStatus() !="Deliverd") {
+		Iterator<ChequeBook> itr = books.iterator();
+
+		while (itr.hasNext()) {
+			ChequeBook b = itr.next();
+			if (b.getAccountNumber() == accountNumber) {
 				chequeBook = b;
-				System.out.println(chequeBook);
-				break;
 			}
 		}
-		return new ResponseEntity<>(chequeBook,HttpStatus.OK);
+		return new ResponseEntity<>(chequeBook, HttpStatus.OK);
 	}
-	
+
 }

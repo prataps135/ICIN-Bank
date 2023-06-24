@@ -30,7 +30,8 @@ export class UserPortalComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.authService.getUser();
     this.chequeBookService.getByAccountNumber(this.currentUser.account.number).subscribe(
-      data => this.chequeBook = data
+      data => this.chequeBook = data,
+      err => console.log(err)
     );
   }
 
@@ -53,7 +54,7 @@ export class UserPortalComponent implements OnInit {
   }
 
   chequeBookRequest() {
-    if (this.chequeBook.status === 'Deliverd') {
+    if (this.chequeBook.deliverd) {
       const dialogRef = this.dailog.open(ChequeBookRequestComponent, {
         data: { user: this.currentUser }
       });

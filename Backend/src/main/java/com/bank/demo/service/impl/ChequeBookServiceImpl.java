@@ -31,6 +31,7 @@ public class ChequeBookServiceImpl implements ChequeBookService{
 	public ChequeBook updateStatus(ChequeBook chequeBook) {
 		ChequeBook existingBook = bookRepo.findById(chequeBook.getId()).get();
 		existingBook.setStatus(chequeBook.getStatus());
+		existingBook.setDeliverd(chequeBook.isDeliverd());
 		ChequeBook updatedBook = bookRepo.save(existingBook);
 		return updatedBook;
 	}
