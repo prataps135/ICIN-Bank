@@ -16,4 +16,8 @@ export class StatementService {
   getStatementByAccountNumber(number: number): Observable<Statement[]> {
     return this.http.get<Statement[]>(`${this.baseUrl}/${number}`);
   }
+
+  addStatement(statement: Statement): Observable<any> {
+    return this.http.post(this.baseUrl, statement);
+  }
 }

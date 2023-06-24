@@ -17,7 +17,7 @@ export class AuthenticationService {
     contactNo: 7877696954,
     account: {
       number:7679529,
-      balance:152400,
+      balance:159100,
       type:'Current'
     }
   };

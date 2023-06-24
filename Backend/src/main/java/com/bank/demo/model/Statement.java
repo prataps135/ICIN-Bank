@@ -26,7 +26,7 @@ public class Statement {
 	
 	@Column
 	@NotNull
-	private String detials;
+	private String details;
 	
 	@Column
 	private long debit;
@@ -42,12 +42,12 @@ public class Statement {
 		super();
 	}
 
-	public Statement(@NotNull long accountNumber, @NotNull Date date, @NotNull String detials, long debit, long credit,
+	public Statement(@NotNull long accountNumber, @NotNull Date date, @NotNull String details, long debit, long credit,
 			@NotNull long balance) {
 		super();
 		this.accountNumber = accountNumber;
 		this.date = date;
-		this.detials = detials;
+		this.details = details;
 		this.debit = debit;
 		this.credit = credit;
 		this.balance = balance;
@@ -69,12 +69,12 @@ public class Statement {
 		this.date = date;
 	}
 
-	public String getDetials() {
-		return detials;
+	public String getDetails() {
+		return details;
 	}
 
-	public void setDetials(String detials) {
-		this.detials = detials;
+	public void setDetails(String details) {
+		this.details = details;
 	}
 
 	public long getDebit() {

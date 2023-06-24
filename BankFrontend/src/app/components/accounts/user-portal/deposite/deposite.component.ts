@@ -6,6 +6,9 @@ import { AccountService } from 'src/app/services/account/account.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { DepositeDialogComponent } from '../dialog/deposite-dialog/deposite-dialog.component';
+import { Account } from 'src/app/model/account';
+import { Statement } from 'src/app/model/statement';
+import { StatementService } from 'src/app/services/statement/statement.service';
 
 @Component({
   selector: 'app-deposite',
@@ -15,13 +18,17 @@ import { DepositeDialogComponent } from '../dialog/deposite-dialog/deposite-dial
 export class DepositeComponent {
   @Input() user: User;
   depositeAmount: number;
+  statement: Statement;
 
   constructor(
     private notification: NotificationService,
     private authService: AuthenticationService,
     private accountService: AccountService,
-    private dialog: MatDialog
-  ) { }
+    private dialog: MatDialog,
+    private statementService:StatementService
+  ) {
+    this.statement = new Statement();
+  }
 
   deposite(depositeForm: NgForm) {
     if (depositeForm.invalid) {
@@ -40,11 +47,24 @@ export class DepositeComponent {
           });
 
           dialogRef.afterClosed();
+
+          this.addStatement(data);
         },
         err => {
           this.notification.showError(err.error, "Bank");
         }
       );
     }
+  }
+
+  addStatement(data: Account) {
+    this.statement.accountNumber = this.user.account.number;
+    this.statement.balance = data.balance;
+    this.statement.credit = this.depositeAmount;
+    this.statement.debit = 0;
+    this.statement.details = "Deposite";
+    this.statement.date = new Date();
+
+    this.statementService.addStatement(this.statement).subscribe();
   }
 }
