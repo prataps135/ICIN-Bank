@@ -3,7 +3,7 @@
             <button mat-icon-button (click)="sidenav.toggle()">
                 <mat-icon>menu</mat-icon>
             </button>
-            <h1 style="padding: 10px;">{{title}}</h1>
+            <h1 style="padding: 10px; cursor:pointer" routerLink="/">{{title}}</h1>
             <span class="menu-spacer"></span>
             <div>
                 <a mat-button [routerLink]="['/user-portal']" [routerLinkActive]="'active'" *ngIf="auth === 'User'">Accounts</a>

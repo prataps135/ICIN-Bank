@@ -41,6 +41,9 @@ import { StatementService } from './services/statement/statement.service';
 import { ChequeBookService } from './services/cheque book/cheque-book.service';
 import { ChequeBookListComponent } from './components/admin/admin-portal/cheque-book-list/cheque-book-list.component';
 import { ChequeBookStatusComponent } from './components/accounts/user-portal/dialog/cheque-book-status/cheque-book-status.component';
+import { UserAuthGuard } from './guards/user-auth/user-auth.guard';
+import { AdminAuthGuard } from './guards/admin-auth/admin-auth.guard';
+
 
 
 @NgModule({
@@ -96,7 +99,9 @@ import { ChequeBookStatusComponent } from './components/accounts/user-portal/dia
     AuthenticationService,
     AccountService,
     StatementService,
-    ChequeBookService
+    ChequeBookService,
+    UserAuthGuard,
+    AdminAuthGuard
   ],
   bootstrap: [AppComponent]
 })
