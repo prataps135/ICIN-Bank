@@ -14,6 +14,7 @@ import { UserPortalComponent } from './components/accounts/user-portal/user-port
 import { AdminPortalComponent } from './components/admin/admin-portal/admin-portal.component';
 import { UserAuthGuard } from './guards/user-auth/user-auth.guard';
 import { AdminAuthGuard } from './guards/admin-auth/admin-auth.guard';
+import { HomeComponent } from './components/home/home.component';
 
 
 const routes: Routes = [
@@ -30,8 +31,11 @@ const routes: Routes = [
   { path: 'account-details/:id', component: AccountDetailsComponent },
   { path: 'update-account/:id', component: UpdateAccountComponent },
   { path: 'update-admin/:id', component: UpdateAdminComponent },
-  { path: 'user-portal', component: UserPortalComponent,canActivate:[UserAuthGuard]},
-  { path: 'admin-portal', component: AdminPortalComponent,canActivate:[AdminAuthGuard] }
+  { path: 'user-portal', component: UserPortalComponent, canActivate: [UserAuthGuard] },
+  { path: 'admin-portal', component: AdminPortalComponent, canActivate: [AdminAuthGuard] },
+  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' }
 
 ];
 

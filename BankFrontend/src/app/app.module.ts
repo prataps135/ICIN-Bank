@@ -43,6 +43,7 @@ import { ChequeBookListComponent } from './components/admin/admin-portal/cheque-
 import { ChequeBookStatusComponent } from './components/accounts/user-portal/dialog/cheque-book-status/cheque-book-status.component';
 import { UserAuthGuard } from './guards/user-auth/user-auth.guard';
 import { AdminAuthGuard } from './guards/admin-auth/admin-auth.guard';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -74,6 +75,7 @@ import { AdminAuthGuard } from './guards/admin-auth/admin-auth.guard';
     ChequeBookRequestComponent,
     ChequeBookListComponent,
     ChequeBookStatusComponent,
+    HomeComponent,
     
   ],
   imports: [
